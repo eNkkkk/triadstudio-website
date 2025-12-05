@@ -3,151 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triad Studio | Sviluppo Web Torino</title>
-    <meta name="description" content="Agenzia di sviluppo web e soluzioni digitali. Siti web, e-commerce e strategie digitali.">
+    <title>TRIAD STUDIO | System Online</title>
+    <meta name="description" content="Sviluppo Web & Cybersecurity. Torino.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-color: #0f0f0f;
-            --card-bg: #1a1a1a;
-            --text-main: #ffffff;
-            --text-muted: #888888;
-            --accent: #ffffff; 
-            --hover-border: #444444;
-        }
-
-        * {
-            box-sizing: border-box;
+            --bg-color: #050505;
+            --terminal-green: #00ff41; /* Il classico verde Matrix/Terminale */
+            --terminal-dim: #008f11;
+            --text-color: #e0e0e0;
+            --scanline-color: rgba(0, 0, 0, 0.5);
         }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-main);
+            color: var(--text-color);
+            font-family: 'JetBrains Mono', monospace;
             display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            align-items: center; /* Centra verticalmente se lo schermo è alto */
             min-height: 100vh;
-            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Effetto Scanline CRT sullo sfondo */
+        body::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
+            background-size: 100% 4px;
+            z-index: 100;
+            pointer-events: none; /* Lascia cliccare sotto */
         }
 
         .container {
             width: 100%;
-            max-width: 480px; /* Larghezza tipo app mobile */
-            padding: 40px 20px;
-            text-align: center;
-            opacity: 0; /* Per l'animazione iniziale */
-            animation: fadeIn 0.8s ease-out forwards;
+            max-width: 600px;
+            padding: 2rem;
+            border: 1px solid #333;
+            background: #0a0a0a;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+            position: relative;
+            z-index: 1;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Header */
-        header {
-            margin-bottom: 40px;
+        /* Header stile Terminale */
+        .terminal-header {
+            border-bottom: 1px solid #333;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #666;
+            text-transform: uppercase;
         }
 
         h1 {
-            font-weight: 600;
-            font-size: 1.8rem;
-            margin: 0 0 8px 0;
-            letter-spacing: -0.5px;
+            color: var(--terminal-green);
+            font-size: 2rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
         }
 
-        .tagline {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            font-weight: 300;
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.8rem;
+            background-color: var(--terminal-green);
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .subtitle {
+            margin-top: 10px;
+            color: #888;
+            font-size: 0.9rem;
         }
 
         /* Sezioni */
-        .section-title {
+        .section-label {
+            color: var(--terminal-dim);
             font-size: 0.75rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-            margin-top: 30px;
-            text-align: left;
-            padding-left: 5px;
+            border-left: 2px solid var(--terminal-dim);
+            padding-left: 10px;
         }
 
-        /* Link Cards */
-        .link-card {
+        /* Pulsanti Cyber */
+        .btn {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            background-color: var(--card-bg);
-            color: var(--text-main);
-            text-decoration: none;
-            padding: 16px 20px;
-            margin-bottom: 12px;
-            border-radius: 12px;
-            border: 1px solid transparent;
-            transition: all 0.2s ease;
-            font-weight: 400;
-        }
-
-        .link-card:hover {
-            border-color: var(--hover-border);
-            transform: scale(1.02);
-            background-color: #222;
-        }
-
-        .link-card span {
-            display: flex;
             align-items: center;
-            gap: 10px;
+            text-decoration: none;
+            color: var(--text-color);
+            border: 1px solid #333;
+            background: #0f0f0f;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
         }
 
-        /* Icone SVG */
-        .icon {
-            width: 20px;
-            height: 20px;
-            stroke: var(--text-main);
-            stroke-width: 2;
-            fill: none;
+        .btn:hover {
+            border-color: var(--terminal-green);
+            background: rgba(0, 255, 65, 0.05);
+            color: var(--terminal-green);
+            transform: translateX(5px); /* Spostamento laterale scattoso */
+            box-shadow: -2px 0 0 var(--terminal-green);
         }
-        
-        .icon-arrow {
-            opacity: 0.5;
+
+        .btn .arrow {
+            opacity: 0;
             transition: opacity 0.2s;
         }
-        
-        .link-card:hover .icon-arrow {
+        .btn:hover .arrow {
             opacity: 1;
         }
 
-        /* Pulsante Primario (CTA) */
-        .btn-primary {
-            display: block;
-            width: 100%;
-            background-color: var(--text-main);
-            color: var(--bg-color);
-            padding: 16px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 30px;
-            transition: opacity 0.2s;
+        /* Contact Info Block */
+        .contact-block {
+            margin-top: 2rem;
+            background: #111;
+            padding: 15px;
+            border: 1px dashed #444;
+            font-size: 0.9rem;
         }
 
-        .btn-primary:hover {
-            opacity: 0.9;
+        .contact-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #222;
+        }
+        .contact-row:last-child { border-bottom: none; }
+        
+        .contact-row a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .contact-row a:hover {
+            color: var(--terminal-green);
+            text-decoration: underline;
         }
 
         footer {
-            margin-top: 50px;
-            font-size: 0.8rem;
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.7rem;
             color: #444;
         }
     </style>
@@ -155,46 +175,50 @@
 <body>
 
     <div class="container">
-        <header>
-            <h1>TRIAD STUDIO</h1>
-            <div class="tagline">Digital Solutions & Web Development</div>
-        </header>
+        <div class="terminal-header">
+            <span>root@triadstudio:~# ./init_site.sh</span>
+            <span>STATUS: ONLINE</span>
+        </div>
 
-        <div class="section-title">Ultimi Progetti</div>
+        <h1>TRIAD STUDIO<span class="cursor"></span></h1>
+        <div class="subtitle">
+            > Web Development<br>
+            > Digital Marketing<br>
+            > Cybersecurity
+        </div>
 
-        <a href="https://www.example.com" target="_blank" class="link-card">
-            <span>Ristorante La Mole</span>
-            <svg class="icon icon-arrow" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        <div class="section-label">Deployments</div>
+
+        <a href="https://www.indacobarber.com" target="_blank" class="btn">
+            <span>[1] Progetto: Indaco</span>
+            <span class="arrow">&lt;&lt;</span>
         </a>
 
-        <a href="https://www.example2.com" target="_blank" class="link-card">
-            <span>Studio Legale Rossi</span>
-            <svg class="icon icon-arrow" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        <a href="https://www.armerialorenzoni.it" target="_blank" class="btn">
+            <span>[2] Progetto: Armeria Lorenzoni</span>
+            <span class="arrow">&lt;&lt;</span>
         </a>
 
-        <div class="section-title">Contatti diretti</div>
+        <div class="section-label">Communication Uplink</div>
 
-        <a href="tel:+393330000000" class="link-card">
-            <span>
-                <svg class="icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                +39 333 123 4567
-            </span>
-        </a>
+        <div class="contact-block">
+            <div class="contact-row">
+                <span style="color:#666">Phone:</span>
+                <a href="tel:+393331234567">+39 349 418 0812</a>
+            </div>
+            <div class="contact-row">
+                <span style="color:#666">Email:</span>
+                <a href="mailto:info@triadstudio.it">info@triadstudio.it</a>
+            </div>
+        </div>
 
-        <a href="mailto:info@triadstudio.it" class="link-card">
-            <span>
-                <svg class="icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                info@triadstudio.it
-            </span>
-        </a>
-
-        <a href="mailto:info@triadstudio.it?subject=Richiesta%20Preventivo" class="btn-primary">
-            Richiedi un preventivo
+        <a href="mailto:info@triadstudio.it" class="btn" style="margin-top: 15px; border-color: var(--terminal-dim); justify-content: center; text-transform: uppercase; letter-spacing: 2px;">
+            Inizia Progetto
         </a>
 
         <footer>
-            &copy; 2024 Triad Studio<br>
-            Torino, IT
+            2025 TRIAD STUDIO // TORINO, IT<br>
+            ALL SYSTEMS NOMINAL
         </footer>
     </div>
 
