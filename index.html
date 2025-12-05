@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triad Studio | Digital Solutions</title>
+    <meta name="description" content="Sviluppo web e soluzioni digitali a Torino.">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #e0e0e0;
+            --accent-color: #00ff88; /* Un verde cyber/tech */
+            --hover-color: #333;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace; /* Font monospaziato stile dev */
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -2px;
+        }
+        .subtitle {
+            font-size: 1rem;
+            color: #888;
+            margin-bottom: 3rem;
+        }
+        .status-badge {
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+        .btn {
+            text-decoration: none;
+            color: var(--text-color);
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: #111;
+        }
+        .btn:hover {
+            border-color: var(--text-color);
+            background: #222;
+            transform: translateY(-2px);
+        }
+        footer {
+            margin-top: 4rem;
+            font-size: 0.8rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="status-badge">● Sito in costruzione</div>
+        
+        <h1>TRIAD STUDIO</h1>
+        <p class="subtitle">Web Development & Digital Strategy</p>
+
+        <div class="links">
+            <a href="https://www.sito-cliente-1.com" class="btn" target="_blank">Progetto 1: Nome Cliente</a>
+            <a href="https://www.sito-cliente-2.com" class="btn" target="_blank">Progetto 2: Nome Cliente</a>
+            
+            <a href="mailto:info@triadstudio.it" class="btn" style="margin-top: 10px; border-color: var(--accent-color);">Contattaci</a>
+        </div>
+
+        <footer>
+            &copy; 2024 Triad Studio - Torino, IT
+        </footer>
+    </div>
+
+</body>
+</html>
